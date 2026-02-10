@@ -1,4 +1,3 @@
-import { Badge } from '../shared/Badge';
 import { IconButton } from '../shared/IconButton';
 import { RefreshIcon, CalendarIcon, PlusIcon } from '../shared/icons';
 import { useDashboard } from '../../context/DashboardContext';
@@ -23,7 +22,7 @@ export function DashboardHeader({ onAddWidget }: DashboardHeaderProps) {
     <div className={styles.header}>
       <div className={styles.titleGroup}>
         <h1 className={styles.title}>App Performance</h1>
-        <Badge variant="brand">Beta</Badge>
+
       </div>
 
       <div className={styles.controls}>
