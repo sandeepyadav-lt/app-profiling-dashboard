@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, type ReactNode } from 'react';
 import { IconButton } from './IconButton';
-import { FilterIcon, XIcon, PencilIcon } from './icons';
+import { FilterIcon, XIcon, PencilIcon, DragHandleIcon } from './icons';
+import { useDragHandle } from '../layout/SortableWidget';
 import styles from './WidgetCard.module.css';
 
 interface WidgetCardProps {
@@ -40,9 +41,21 @@ export function WidgetCard({
     setEditing(false);
   };
 
+  const dragHandle = useDragHandle();
+
   return (
     <div className={`${styles.card} ${fullSpan ? styles.fullSpan : ''}`} style={style}>
       <div className={styles.header}>
+        {dragHandle && (
+          <button
+            className={styles.dragHandle}
+            {...dragHandle.attributes}
+            {...dragHandle.listeners}
+            aria-label="Drag to reorder"
+          >
+            <DragHandleIcon size={16} />
+          </button>
+        )}
         <div className={styles.titleGroup}>
           {editing ? (
             <input

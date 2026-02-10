@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
+import { arrayMove } from '@dnd-kit/sortable';
 import type { DateRange, Frequency, WidgetInstance, WidgetFilterState, WidgetType } from '../types/dashboard';
 import { getWidgetMeta } from '../data/widget-registry';
 
@@ -21,6 +22,7 @@ interface DashboardContextValue {
   updateWidgetFilters: (id: string, filters: WidgetFilterState) => void;
   updateWidgetKpiVisibility: (id: string, kpiVisibility: Record<string, boolean>) => void;
   updateWidgetLabel: (id: string, label: string) => void;
+  reorderWidgets: (activeId: string, overId: string) => void;
 }
 
 const DashboardContext = createContext<DashboardContextValue | null>(null);
@@ -114,6 +116,15 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
     );
   }, []);
 
+  const reorderWidgets = useCallback((activeId: string, overId: string) => {
+    setWidgets((prev) => {
+      const oldIndex = prev.findIndex((w) => w.id === activeId);
+      const newIndex = prev.findIndex((w) => w.id === overId);
+      if (oldIndex === -1 || newIndex === -1) return prev;
+      return arrayMove(prev, oldIndex, newIndex);
+    });
+  }, []);
+
   return (
     <DashboardContext.Provider
       value={{
@@ -121,7 +132,7 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
         frequency, setFrequency,
         widgets, addWidget, removeWidget,
         updateWidgetFilters, updateWidgetKpiVisibility,
-        updateWidgetLabel,
+        updateWidgetLabel, reorderWidgets,
       }}
     >
       {children}

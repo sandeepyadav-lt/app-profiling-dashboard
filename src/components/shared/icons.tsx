@@ -229,6 +229,19 @@ export function PencilIcon({ size = 16, className }: IconProps) {
   );
 }
 
+export function DragHandleIcon({ size = 20, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 20 20" fill="none" className={className}>
+      <circle cx="7" cy="5" r="1.5" fill="currentColor" />
+      <circle cx="13" cy="5" r="1.5" fill="currentColor" />
+      <circle cx="7" cy="10" r="1.5" fill="currentColor" />
+      <circle cx="13" cy="10" r="1.5" fill="currentColor" />
+      <circle cx="7" cy="15" r="1.5" fill="currentColor" />
+      <circle cx="13" cy="15" r="1.5" fill="currentColor" />
+    </svg>
+  );
+}
+
 export function CopilotIcon({ size = 16, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className}>

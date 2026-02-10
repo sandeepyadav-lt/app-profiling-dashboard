@@ -14,6 +14,34 @@
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
+.dragHandle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: grab;
+  padding: 2px;
+  border-radius: var(--radius-sm, 4px);
+  color: var(--color-fg-muted);
+  opacity: 0;
+  transition: opacity 150ms ease;
+  touch-action: none;
+}
+
+.dragHandle:hover {
+  color: var(--color-fg-default);
+  background: var(--color-neutral-muted, rgba(0, 0, 0, 0.05));
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.card:hover .dragHandle {
+  opacity: 1;
+}
+
 .titleGroup {
   display: flex;
   align-items: center;
