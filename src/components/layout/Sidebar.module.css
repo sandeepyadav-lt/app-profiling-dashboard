@@ -64,5 +64,17 @@
 }
 
 .bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
   padding-bottom: var(--space-3);
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #16a34a;
+  margin-top: var(--space-2);
 }
