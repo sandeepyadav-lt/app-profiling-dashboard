@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { WidgetCard } from '../shared/WidgetCard';
 import { StatsRow } from '../shared/StatsRow';
+import { CompareStatsTable } from '../shared/CompareStatsTable';
 import { FilterPanel } from '../shared/FilterPanel';
 import { useFilterPanel } from '../../hooks/useFilterPanel';
 import { useStaggeredEntry } from '../../hooks/useStaggeredEntry';
@@ -10,6 +11,7 @@ import { cpuChartData, cpuStats } from '../../data/cpu-data';
 import { chartColors, withAlpha } from '../../utils/chart-colors';
 import { baseLineOptions } from '../../utils/chart-defaults';
 import { generateVariant, getCompareItems } from '../../utils/mock-variants';
+import { computeStats } from '../../utils/stats';
 import type { WidgetInstanceProps } from '../../types/dashboard';
 import type { ChartOptions } from 'chart.js';
 import styles from './CpuUsageWidget.module.css';
@@ -92,7 +94,18 @@ export function CpuUsageWidget({ instance, index }: WidgetInstanceProps) {
         <div className={styles.chartContainer}>
           <Line data={chartData} options={compareOptions} />
         </div>
-        {!isComparing && <StatsRow stats={cpuStats} />}
+        {isComparing ? (
+          <CompareStatsTable
+            columns={[{ label: 'CPU Usage', unit: '%' }]}
+            rows={compareItems.map((item) => ({
+              label: item.label,
+              color: item.color,
+              values: [computeStats(generateVariant(baseValues, item.id))],
+            }))}
+          />
+        ) : (
+          <StatsRow stats={cpuStats} />
+        )}
       </WidgetCard>
       <FilterPanel
         isOpen={filterPanel.isOpen}

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Line } from 'react-chartjs-2';
 import { WidgetCard } from '../shared/WidgetCard';
+import { CompareStatsTable } from '../shared/CompareStatsTable';
 import { FilterPanel } from '../shared/FilterPanel';
 import { KpiSelectorPopover } from '../shared/KpiSelectorPopover';
 import { useFilterPanel } from '../../hooks/useFilterPanel';
@@ -10,6 +11,7 @@ import { trendLabels, trendLines as initialTrendLines } from '../../data/trends-
 import { withAlpha } from '../../utils/chart-colors';
 import { baseLineOptions } from '../../utils/chart-defaults';
 import { generateVariant, getCompareItems, getCompareDash } from '../../utils/mock-variants';
+import { computeStats } from '../../utils/stats';
 import type { WidgetInstanceProps } from '../../types/dashboard';
 import type { ChartOptions } from 'chart.js';
 import styles from './PerformanceTrendsWidget.module.css';
@@ -149,7 +151,18 @@ export function PerformanceTrendsWidget({ instance, index }: WidgetInstanceProps
         <div className={styles.chartContainer}>
           <Line data={chartData} options={chartOptions} />
         </div>
-        {!isComparing && (
+        {isComparing ? (
+          <CompareStatsTable
+            columns={visibleLines.map((l) => ({ label: l.label, unit: l.unit }))}
+            rows={compareItems.map((cItem) => ({
+              label: cItem.label,
+              color: cItem.color,
+              values: visibleLines.map((line) =>
+                computeStats(generateVariant(line.data, `${line.id}-${cItem.id}`))
+              ),
+            }))}
+          />
+        ) : (
           <div className={styles.legend}>
             {visibleLines.map((line) => (
               <span key={line.id} className={styles.legendItem}>
