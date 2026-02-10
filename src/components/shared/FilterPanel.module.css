@@ -1,0 +1,191 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 35, 40, 0.3);
+  z-index: 1000;
+  animation: fadeIn var(--duration-normal) ease;
+}
+
+.backdrop.closing {
+  animation: fadeOut var(--duration-normal) ease forwards;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 540px;
+  max-width: 90vw;
+  background: var(--color-canvas-default);
+  box-shadow: var(--shadow-overlay);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight var(--duration-slow) var(--easing-default);
+}
+
+.panel.closing {
+  animation: slideOutRight var(--duration-slow) var(--easing-default) forwards;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.panelTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.panelBody {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.categorySidebar {
+  width: 160px;
+  border-right: 1px solid var(--color-border-subtle);
+  padding: var(--space-2) 0;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.categoryBtn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-md);
+  color: var(--color-fg-muted);
+  border-left: 2px solid transparent;
+  transition: all var(--duration-fast) ease;
+}
+
+.categoryBtn:hover {
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-default);
+}
+
+.categoryBtn.active {
+  color: var(--color-fg-default);
+  font-weight: var(--font-weight-medium);
+  border-left-color: var(--lt-brand-orange);
+  background: var(--color-canvas-subtle);
+}
+
+.optionsList {
+  flex: 1;
+  padding: var(--space-4) var(--space-5);
+  overflow-y: auto;
+}
+
+.optionsList.compareActive {
+  border-left: 3px solid var(--lt-brand-orange);
+}
+
+.modeToggle {
+  display: inline-flex;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+}
+
+.modeBtn {
+  padding: 4px 14px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg-muted);
+  background: var(--color-canvas-default);
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.modeBtn:not(:last-child) {
+  border-right: 1px solid var(--color-border-default);
+}
+
+.modeBtn:hover {
+  background: var(--color-canvas-subtle);
+}
+
+.modeBtnActive {
+  background: var(--lt-brand-orange);
+  color: white;
+}
+
+.modeBtnActive:hover {
+  background: var(--lt-brand-orange-hover);
+}
+
+.compareHint {
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+  font-style: italic;
+  margin-bottom: var(--space-3);
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+}
+
+.optionItem label {
+  font-size: var(--font-size-base);
+  color: var(--color-fg-default);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--lt-brand-orange);
+  cursor: pointer;
+}
+
+.panelFooter {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-border-default);
+}
+
+.btnSecondary {
+  padding: 6px 16px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid var(--color-border-default);
+  background: var(--color-canvas-default);
+  color: var(--color-fg-default);
+  transition: background var(--duration-fast) ease;
+}
+
+.btnSecondary:hover {
+  background: var(--color-canvas-subtle);
+}
+
+.btnPrimary {
+  padding: 6px 16px;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  background: var(--lt-brand-orange);
+  color: white;
+  transition: background var(--duration-fast) ease;
+}
+
+.btnPrimary:hover {
+  background: var(--lt-brand-orange-hover);
+}

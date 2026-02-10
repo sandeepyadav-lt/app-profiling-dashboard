@@ -1,0 +1,41 @@
+import type { ChartDataPoint, StatItem } from '../types/dashboard';
+
+export const memoryChartData: ChartDataPoint[] = [
+  { label: 'Jan 1', value: 245 },
+  { label: 'Jan 2', value: 258 },
+  { label: 'Jan 3', value: 232 },
+  { label: 'Jan 4', value: 278 },
+  { label: 'Jan 5', value: 295 },
+  { label: 'Jan 6', value: 268 },
+  { label: 'Jan 7', value: 252 },
+  { label: 'Jan 8', value: 285 },
+  { label: 'Jan 9', value: 342 },
+  { label: 'Jan 10', value: 388 },
+  { label: 'Jan 11', value: 365 },
+  { label: 'Jan 12', value: 318 },
+  { label: 'Jan 13', value: 295 },
+  { label: 'Jan 14', value: 272 },
+  { label: 'Jan 15', value: 289 },
+  { label: 'Jan 16', value: 312 },
+  { label: 'Jan 17', value: 298 },
+  { label: 'Jan 18', value: 275 },
+  { label: 'Jan 19', value: 258 },
+  { label: 'Jan 20', value: 242 },
+  { label: 'Jan 21', value: 265 },
+  { label: 'Jan 22', value: 288 },
+  { label: 'Jan 23', value: 310 },
+  { label: 'Jan 24', value: 335 },
+  { label: 'Jan 25', value: 308 },
+  { label: 'Jan 26', value: 282 },
+  { label: 'Jan 27', value: 255 },
+  { label: 'Jan 28', value: 238 },
+  { label: 'Jan 29', value: 268 },
+  { label: 'Jan 30', value: 290 },
+];
+
+export const memoryStats: StatItem[] = [
+  { label: 'Min', value: '182 MB' },
+  { label: 'Max', value: '418 MB' },
+  { label: 'Mean', value: '287 MB' },
+  { label: 'P95', value: '376 MB' },
+];

@@ -1,0 +1,85 @@
+.card {
+  background: var(--color-canvas-default);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-fg-default);
+  white-space: nowrap;
+}
+
+.titleInput {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-fg-default);
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--color-border-default);
+  outline: none;
+  padding: 0 0 1px;
+  line-height: inherit;
+  font-family: inherit;
+}
+
+.titleInput:focus {
+  border-bottom-color: var(--color-accent-emphasis, #0969da);
+}
+
+.editBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: var(--radius-sm, 4px);
+  color: var(--color-fg-muted);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.editBtn:hover {
+  color: var(--color-fg-default);
+  background: var(--color-neutral-muted, rgba(0, 0, 0, 0.05));
+}
+
+.titleGroup:hover .editBtn {
+  opacity: 1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.body {
+  padding: var(--space-5);
+}
+
+.fullSpan {
+  grid-column: 1 / -1;
+}

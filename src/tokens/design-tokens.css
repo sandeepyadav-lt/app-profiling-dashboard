@@ -1,0 +1,106 @@
+:root {
+  /* ── Primer Neutral Scale ── */
+  --color-canvas-default: #ffffff;
+  --color-canvas-subtle: #f6f8fa;
+  --color-canvas-inset: #eff2f5;
+  --color-border-default: #d1d9e0;
+  --color-border-muted: #d8dee4;
+  --color-border-subtle: #e8ecf0;
+  --color-fg-default: #1f2328;
+  --color-fg-muted: #59636e;
+  --color-fg-subtle: #6e7781;
+  --color-fg-onEmphasis: #ffffff;
+
+  /* ── Primer Semantic Colors ── */
+  --color-success-fg: #1a7f37;
+  --color-success-subtle: #dafbe1;
+  --color-danger-fg: #d1242f;
+  --color-danger-subtle: #ffebe9;
+  --color-attention-fg: #9a6700;
+  --color-attention-subtle: #fff8c5;
+  --color-accent-fg: #0969da;
+  --color-accent-subtle: #ddf4ff;
+  --color-neutral-subtle: #eaeef2;
+
+  /* ── LambdaTest Brand ── */
+  --lt-brand-orange: #ff6b35;
+  --lt-brand-orange-hover: #e65a2a;
+  --lt-brand-orange-subtle: #fff3ee;
+  --lt-brand-purple: #6f42c1;
+  --lt-brand-purple-subtle: #f0ebff;
+  --lt-sidebar-bg: #1c1e26;
+  --lt-sidebar-fg: #8b949e;
+  --lt-sidebar-active: #ffffff;
+  --lt-sidebar-hover-bg: #2d333b;
+
+  /* ── Chart Palette ── */
+  --chart-blue: #0969da;
+  --chart-blue-area: rgba(9, 105, 218, 0.08);
+  --chart-purple: #8250df;
+  --chart-purple-area: rgba(130, 80, 223, 0.08);
+  --chart-cyan: #0891b2;
+  --chart-orange: #f97316;
+  --chart-green: #16a34a;
+  --chart-red: #dc2626;
+  --chart-pink: #db2777;
+  --chart-yellow: #ca8a04;
+  --chart-sla-red: #dc2626;
+
+  /* ── Heatmap Scale ── */
+  --heatmap-green: #16a34a;
+  --heatmap-yellow: #ca8a04;
+  --heatmap-orange: #ea580c;
+  --heatmap-red: #dc2626;
+  --heatmap-bg-green: #dcfce7;
+  --heatmap-bg-yellow: #fef9c3;
+  --heatmap-bg-orange: #ffedd5;
+  --heatmap-bg-red: #fee2e2;
+
+  /* ── Typography ── */
+  --font-family: 'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.8125rem;
+  --font-size-base: 0.875rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.25rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+
+  /* ── Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ── Radii ── */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 2px rgba(31, 35, 40, 0.04);
+  --shadow-md: 0 1px 3px rgba(31, 35, 40, 0.06), 0 1px 2px rgba(31, 35, 40, 0.04);
+  --shadow-lg: 0 4px 12px rgba(31, 35, 40, 0.08);
+  --shadow-overlay: 0 8px 24px rgba(31, 35, 40, 0.12);
+
+  /* ── Layout ── */
+  --sidebar-width: 48px;
+  --topnav-height: 48px;
+  --header-height: auto;
+
+  /* ── Transitions ── */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --easing-default: cubic-bezier(0.16, 1, 0.3, 1);
+}

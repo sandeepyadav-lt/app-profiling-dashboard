@@ -1,0 +1,150 @@
+.summaryRow {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.summaryCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.summaryCard.ok {
+  background: var(--color-success-subtle);
+  border-color: #b4dfca;
+}
+
+.summaryCard.warning {
+  background: var(--color-attention-subtle);
+  border-color: #e8d48b;
+}
+
+.summaryCard.critical {
+  background: var(--color-danger-subtle);
+  border-color: #f0b8b8;
+}
+
+.summaryCount {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.summaryCard.ok .summaryCount { color: var(--color-success-fg); }
+.summaryCard.warning .summaryCount { color: var(--color-attention-fg); }
+.summaryCard.critical .summaryCount { color: var(--color-danger-fg); }
+
+.summaryLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-fg-muted);
+  font-weight: var(--font-weight-medium);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  font-size: var(--font-size-md);
+}
+
+.table th {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-fg-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--color-border-default);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  white-space: nowrap;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: var(--color-canvas-subtle);
+}
+
+.metricName {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg-default);
+}
+
+.condition {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+}
+
+.currentValue {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.statusBadge.ok {
+  background: var(--color-success-subtle);
+  color: var(--color-success-fg);
+}
+
+.statusBadge.warning {
+  background: var(--color-attention-subtle);
+  color: var(--color-attention-fg);
+}
+
+.statusBadge.critical {
+  background: var(--color-danger-subtle);
+  color: var(--color-danger-fg);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.breachCount {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+}
+
+.breachCount.hasBreaches {
+  color: var(--color-danger-fg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.lastBreached {
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-subtle);
+}

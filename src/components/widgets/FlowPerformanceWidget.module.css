@@ -1,0 +1,31 @@
+.chartContainer {
+  height: 300px;
+  position: relative;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+  font-size: var(--font-size-xs);
+  color: var(--color-fg-subtle);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.legendLine {
+  width: 16px;
+  height: 2px;
+  border-top: 2px dashed;
+}

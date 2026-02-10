@@ -1,0 +1,68 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--lt-sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 500;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sidebar-width);
+  height: var(--sidebar-width);
+  flex-shrink: 0;
+}
+
+.logoMark {
+  width: 24px;
+  height: 24px;
+  background: var(--lt-brand-orange);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: 14px;
+  color: white;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+  flex: 1;
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  color: var(--lt-sidebar-fg);
+  transition: all var(--duration-fast) ease;
+}
+
+.navBtn:hover {
+  background: var(--lt-sidebar-hover-bg);
+  color: var(--lt-sidebar-active);
+}
+
+.navBtn.active {
+  background: var(--lt-sidebar-hover-bg);
+  color: var(--lt-sidebar-active);
+}
+
+.bottom {
+  padding-bottom: var(--space-3);
+}
