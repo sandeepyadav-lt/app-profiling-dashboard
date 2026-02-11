@@ -10,6 +10,7 @@ import { useDashboard } from '../../context/DashboardContext';
 import { cpuChartData, cpuStats } from '../../data/cpu-data';
 import { chartColors, withAlpha } from '../../utils/chart-colors';
 import { baseLineOptions } from '../../utils/chart-defaults';
+import { getThresholdAnnotations } from '../../utils/threshold-zones';
 import { generateVariant, getCompareItems } from '../../utils/mock-variants';
 import { computeStats } from '../../utils/stats';
 import type { WidgetInstanceProps } from '../../types/dashboard';
@@ -39,11 +40,17 @@ const options: ChartOptions<'line'> = {
     y: {
       ...baseLineOptions.scales?.y,
       min: 0,
-      max: 80,
+      max: 100,
       ticks: {
         ...((baseLineOptions.scales?.y && 'ticks' in baseLineOptions.scales.y) ? baseLineOptions.scales.y.ticks : {}),
         callback: (val) => `${val}%`,
       },
+    },
+  },
+  plugins: {
+    ...baseLineOptions.plugins,
+    annotation: {
+      annotations: getThresholdAnnotations('cpu', 0, 100),
     },
   },
 };

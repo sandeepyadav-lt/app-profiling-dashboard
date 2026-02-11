@@ -10,6 +10,7 @@ import { useDashboard } from '../../context/DashboardContext';
 import { trendLabels, trendLines as initialTrendLines } from '../../data/trends-data';
 import { withAlpha } from '../../utils/chart-colors';
 import { baseLineOptions } from '../../utils/chart-defaults';
+import { getThresholdAnnotations, type MetricType } from '../../utils/threshold-zones';
 import { generateVariant, getCompareItems, getCompareDash } from '../../utils/mock-variants';
 import { computeStats } from '../../utils/stats';
 import type { WidgetInstanceProps } from '../../types/dashboard';
@@ -99,16 +100,36 @@ export function PerformanceTrendsWidget({ instance, index }: WidgetInstanceProps
     return { labels: trendLabels, datasets };
   }, [visibleLines, isComparing, compareItems]);
 
+  const trendMetricMap: Record<string, MetricType> = {
+    cpu: 'cpu',
+    memory: 'memory',
+    fps: 'fps',
+    crashRate: 'crashRate',
+  };
+
   const chartOptions: ChartOptions<'line'> = useMemo(() => {
     const yTicks = baseLineOptions.scales?.y && 'ticks' in baseLineOptions.scales.y
       ? baseLineOptions.scales.y.ticks
       : {};
+
+    // Build threshold annotations for visible KPIs
+    const leftAxisLine = visibleLines.find((l) => l.yAxisID === 'y');
+    const rightAxisLine = visibleLines.find((l) => l.yAxisID === 'y1');
+    const annotations: Record<string, unknown> = {};
+
+    if (leftAxisLine && trendMetricMap[leftAxisLine.id]) {
+      Object.assign(annotations, getThresholdAnnotations(trendMetricMap[leftAxisLine.id], 0, 10000, 'y'));
+    }
+    if (rightAxisLine && trendMetricMap[rightAxisLine.id]) {
+      Object.assign(annotations, getThresholdAnnotations(trendMetricMap[rightAxisLine.id], 0, 10000, 'y1'));
+    }
 
     return {
       ...baseLineOptions,
       plugins: {
         ...baseLineOptions.plugins,
         legend: { display: isComparing },
+        annotation: { annotations },
       },
       scales: {
         x: baseLineOptions.scales?.x ?? {},
@@ -135,7 +156,7 @@ export function PerformanceTrendsWidget({ instance, index }: WidgetInstanceProps
           : {}),
       },
     };
-  }, [hasRightAxis, isComparing]);
+  }, [hasRightAxis, isComparing, visibleLines]);
 
   return (
     <>

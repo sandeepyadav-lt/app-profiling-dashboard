@@ -10,6 +10,7 @@ import { useDashboard } from '../../context/DashboardContext';
 import { memoryChartData, memoryStats } from '../../data/memory-data';
 import { chartColors, withAlpha } from '../../utils/chart-colors';
 import { baseLineOptions } from '../../utils/chart-defaults';
+import { getThresholdAnnotations } from '../../utils/threshold-zones';
 import { generateVariant, getCompareItems } from '../../utils/mock-variants';
 import { computeStats } from '../../utils/stats';
 import type { WidgetInstanceProps } from '../../types/dashboard';
@@ -44,6 +45,12 @@ const options: ChartOptions<'line'> = {
         ...((baseLineOptions.scales?.y && 'ticks' in baseLineOptions.scales.y) ? baseLineOptions.scales.y.ticks : {}),
         callback: (val) => `${val} MB`,
       },
+    },
+  },
+  plugins: {
+    ...baseLineOptions.plugins,
+    annotation: {
+      annotations: getThresholdAnnotations('memory', 100, 500),
     },
   },
 };
