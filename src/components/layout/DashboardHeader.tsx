@@ -1,62 +1,45 @@
 import { IconButton } from '../shared/IconButton';
-import { RefreshIcon, CalendarIcon, PlusIcon } from '../shared/icons';
-import { useDashboard } from '../../context/DashboardContext';
-import type { DateRange, Frequency } from '../../types/dashboard';
+import { RefreshIcon } from '../shared/icons';
 import styles from './DashboardHeader.module.css';
 
-const dateRangeLabels: Record<DateRange, string> = {
-  '7d': 'Last 7 days',
-  '14d': 'Last 14 days',
-  '30d': 'Last 30 days',
-  '90d': 'Last 90 days',
-};
-
-interface DashboardHeaderProps {
-  onAddWidget: () => void;
+function NotificationIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M9 2a5 5 0 00-5 5v3l-1 2h12l-1-2V7a5 5 0 00-5-5zM7.5 14a1.5 1.5 0 003 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
 
-export function DashboardHeader({ onAddWidget }: DashboardHeaderProps) {
-  const { dateRange, setDateRange, frequency, setFrequency } = useDashboard();
+function UserAvatar() {
+  return (
+    <div className={styles.avatar}>
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <circle cx="9" cy="7" r="3" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    </div>
+  );
+}
 
+export function DashboardHeader({ onAddWidget }: { onAddWidget: () => void }) {
   return (
     <div className={styles.header}>
       <div className={styles.titleGroup}>
-        <h1 className={styles.title}>App Performance</h1>
-
+        <h1 className={styles.title}>App Profiling</h1>
       </div>
 
       <div className={styles.controls}>
-        <button className={styles.addBtn} onClick={onAddWidget}>
-          <PlusIcon size={14} />
-          Add Widget
-        </button>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <CalendarIcon size={14} />
-          <select
-            className={styles.select}
-            value={dateRange}
-            onChange={(e) => setDateRange(e.target.value as DateRange)}
-          >
-            {Object.entries(dateRangeLabels).map(([value, label]) => (
-              <option key={value} value={value}>{label}</option>
-            ))}
-          </select>
-        </div>
-
-        <select
-          className={styles.select}
-          value={frequency}
-          onChange={(e) => setFrequency(e.target.value as Frequency)}
-        >
-          <option value="daily">Daily</option>
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
-        </select>
-
         <IconButton label="Refresh dashboard">
           <RefreshIcon size={16} />
         </IconButton>
+
+        <div className={styles.divider} />
+
+        <button className={styles.iconBtn} title="Notifications">
+          <NotificationIcon />
+        </button>
+        <UserAvatar />
+        <button className={styles.upgradeBtn}>Upgrade Now</button>
       </div>
     </div>
   );

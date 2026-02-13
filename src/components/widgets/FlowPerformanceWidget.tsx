@@ -9,6 +9,7 @@ import { flowData, slaThreshold } from '../../data/flow-data';
 import { chartColors } from '../../utils/chart-colors';
 import { baseBarOptions } from '../../utils/chart-defaults';
 import { generateVariant, getCompareItems } from '../../utils/mock-variants';
+import { getHorizontalThresholdAnnotations } from '../../utils/threshold-zones';
 import type { WidgetInstanceProps } from '../../types/dashboard';
 import type { ChartOptions } from 'chart.js';
 import styles from './FlowPerformanceWidget.module.css';
@@ -48,6 +49,7 @@ const baseOptions: ChartOptions<'bar'> = {
     ...baseBarOptions.plugins,
     annotation: {
       annotations: {
+        ...getHorizontalThresholdAnnotations('flowDuration', 0, 5),
         slaLine: {
           type: 'line' as const,
           xMin: slaThreshold,

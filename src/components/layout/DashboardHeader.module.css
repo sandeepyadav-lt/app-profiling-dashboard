@@ -25,56 +25,56 @@
   gap: var(--space-3);
 }
 
-.select {
-  display: inline-flex;
+.divider {
+  width: 1px;
+  height: 20px;
+  background: var(--color-border-default);
+}
+
+.iconBtn {
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 5px 12px;
-  border: 1px solid var(--color-border-default);
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-md);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
+  color: var(--color-fg-muted);
+  transition: all var(--duration-fast) ease;
+}
+
+.iconBtn:hover {
+  background: var(--color-canvas-subtle);
   color: var(--color-fg-default);
-  background: var(--color-canvas-default);
-  cursor: pointer;
-  transition: border-color var(--duration-fast) ease;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%236e7781' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  padding-right: 28px;
 }
 
-.select:hover {
-  border-color: var(--color-border-muted);
-}
-
-.select:focus-visible {
-  outline: 2px solid var(--color-accent-fg);
-  outline-offset: 1px;
-}
-
-.addBtn {
-  display: inline-flex;
+.avatar {
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 5px 12px;
-  border: 1px solid var(--color-accent-fg);
-  border-radius: var(--radius-md);
-  background: var(--color-accent-fg);
-  color: #fff;
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
-  font-family: inherit;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-muted);
   cursor: pointer;
-  transition: opacity var(--duration-fast) ease;
+  transition: all var(--duration-fast) ease;
 }
 
-.addBtn:hover {
-  opacity: 0.9;
+.avatar:hover {
+  background: var(--color-border-default);
 }
 
-.addBtn:focus-visible {
-  outline: 2px solid var(--color-accent-fg);
-  outline-offset: 1px;
+.upgradeBtn {
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  background: var(--lt-brand-orange);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: inherit;
+  transition: background var(--duration-fast) ease;
+}
+
+.upgradeBtn:hover {
+  background: var(--lt-brand-orange-hover);
 }

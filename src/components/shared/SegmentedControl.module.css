@@ -1,0 +1,32 @@
+.control {
+  display: inline-flex;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.segment {
+  padding: 3px 10px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: inherit;
+  color: var(--color-fg-muted);
+  background: var(--color-canvas-default);
+  border: none;
+  border-right: 1px solid var(--color-border-default);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.segment:last-child {
+  border-right: none;
+}
+
+.segment:hover:not(.active) {
+  background: var(--color-canvas-subtle);
+}
+
+.segment.active {
+  background: var(--color-accent-fg);
+  color: var(--color-fg-onEmphasis);
+}

@@ -11,43 +11,10 @@
   z-index: 400;
 }
 
-.tabs {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  height: 100%;
-}
-
-.tab {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 var(--space-4);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-fg-muted);
-  transition: color var(--duration-fast) ease;
-}
-
-.tab:hover {
-  color: var(--color-fg-default);
-}
-
-.tab.active {
-  color: var(--color-fg-default);
+.title {
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-}
-
-.tab.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: var(--space-4);
-  right: var(--space-4);
-  height: 2px;
-  background: var(--lt-brand-orange);
-  border-radius: 1px 1px 0 0;
+  color: var(--color-fg-default);
 }
 
 .actions {
@@ -56,19 +23,50 @@
   gap: var(--space-3);
 }
 
-.copilotBtn {
-  display: inline-flex;
+.iconBtn {
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: 5px 12px;
-  background: var(--lt-brand-purple-subtle);
-  color: var(--lt-brand-purple);
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-md);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  color: var(--color-fg-muted);
   transition: all var(--duration-fast) ease;
 }
 
-.copilotBtn:hover {
-  background: #e4d9f9;
+.iconBtn:hover {
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-default);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-muted);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.avatar:hover {
+  background: var(--color-border-default);
+}
+
+.upgradeBtn {
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  background: var(--lt-brand-orange);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: inherit;
+  transition: background var(--duration-fast) ease;
+}
+
+.upgradeBtn:hover {
+  background: var(--lt-brand-orange-hover);
 }

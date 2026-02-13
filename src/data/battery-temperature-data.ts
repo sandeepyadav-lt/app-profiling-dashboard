@@ -1,0 +1,41 @@
+import type { ChartDataPoint, StatItem } from '../types/dashboard';
+
+export const batteryTempData: ChartDataPoint[] = [
+  { label: 'Jan 1', value: 32 },
+  { label: 'Jan 2', value: 34 },
+  { label: 'Jan 3', value: 38 },
+  { label: 'Jan 4', value: 35 },
+  { label: 'Jan 5', value: 42 },
+  { label: 'Jan 6', value: 40 },
+  { label: 'Jan 7', value: 36 },
+  { label: 'Jan 8', value: 33 },
+  { label: 'Jan 9', value: 30 },
+  { label: 'Jan 10', value: 28 },
+  { label: 'Jan 11', value: 32 },
+  { label: 'Jan 12', value: 37 },
+  { label: 'Jan 13', value: 41 },
+  { label: 'Jan 14', value: 38 },
+  { label: 'Jan 15', value: 35 },
+  { label: 'Jan 16', value: 30 },
+  { label: 'Jan 17', value: 28 },
+  { label: 'Jan 18', value: 25 },
+  { label: 'Jan 19', value: 32 },
+  { label: 'Jan 20', value: 36 },
+  { label: 'Jan 21', value: 40 },
+  { label: 'Jan 22', value: 43 },
+  { label: 'Jan 23', value: 39 },
+  { label: 'Jan 24', value: 35 },
+  { label: 'Jan 25', value: 32 },
+  { label: 'Jan 26', value: 29 },
+  { label: 'Jan 27', value: 33 },
+  { label: 'Jan 28', value: 37 },
+  { label: 'Jan 29', value: 34 },
+  { label: 'Jan 30', value: 31 },
+];
+
+export const batteryTempStats: StatItem[] = [
+  { label: 'Min', value: '25°C' },
+  { label: 'Max', value: '43°C' },
+  { label: 'Mean', value: '34°C' },
+  { label: 'P95', value: '42°C' },
+];

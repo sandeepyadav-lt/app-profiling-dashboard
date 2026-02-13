@@ -71,7 +71,15 @@ export type WidgetType =
   | 'flow-performance'
   | 'sla-compliance'
   | 'cpu-usage'
-  | 'memory-usage';
+  | 'memory-usage'
+  | 'frame-rate'
+  | 'battery-utilization'
+  | 'network-utilization'
+  | 'battery-temperature'
+  | 'cold-startup'
+  | 'hot-startup';
+
+export type CpuViewMode = 'app' | 'device' | 'both';
 
 export interface WidgetFilterState {
   selections: Record<string, string[]>;
@@ -84,7 +92,12 @@ export interface WidgetInstance {
   label: string;
   filters: WidgetFilterState;
   kpiVisibility?: Record<string, boolean>;
+  cpuViewMode?: CpuViewMode;
   fullSpan: boolean;
+}
+
+export interface GlobalFilterState {
+  selections: Record<string, string[]>;
 }
 
 export interface WidgetInstanceProps {

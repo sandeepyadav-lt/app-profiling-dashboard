@@ -1,0 +1,85 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px 10px;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: inherit;
+  color: var(--color-fg-muted);
+  background: var(--color-canvas-default);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.trigger:hover {
+  background: var(--color-canvas-subtle);
+  border-color: var(--color-border-muted);
+}
+
+.trigger.active {
+  border-color: var(--color-accent-fg);
+  color: var(--color-accent-fg);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--color-accent-fg);
+  color: var(--color-fg-onEmphasis);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 180px;
+  max-height: 240px;
+  overflow-y: auto;
+  background: var(--color-canvas-default);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  z-index: 100;
+  animation: fadeIn var(--duration-fast) ease;
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-md);
+  color: var(--color-fg-default);
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--duration-fast) ease;
+}
+
+.optionItem:hover {
+  background: var(--color-canvas-subtle);
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--lt-brand-orange);
+  cursor: pointer;
+}

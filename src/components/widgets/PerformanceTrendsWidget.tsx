@@ -115,13 +115,13 @@ export function PerformanceTrendsWidget({ instance, index }: WidgetInstanceProps
     // Build threshold annotations for visible KPIs
     const leftAxisLine = visibleLines.find((l) => l.yAxisID === 'y');
     const rightAxisLine = visibleLines.find((l) => l.yAxisID === 'y1');
-    const annotations: Record<string, unknown> = {};
+    let annotations = {};
 
     if (leftAxisLine && trendMetricMap[leftAxisLine.id]) {
-      Object.assign(annotations, getThresholdAnnotations(trendMetricMap[leftAxisLine.id], 0, 10000, 'y'));
+      annotations = { ...annotations, ...getThresholdAnnotations(trendMetricMap[leftAxisLine.id], 0, 10000, 'y') };
     }
     if (rightAxisLine && trendMetricMap[rightAxisLine.id]) {
-      Object.assign(annotations, getThresholdAnnotations(trendMetricMap[rightAxisLine.id], 0, 10000, 'y1'));
+      annotations = { ...annotations, ...getThresholdAnnotations(trendMetricMap[rightAxisLine.id], 0, 10000, 'y1') };
     }
 
     return {

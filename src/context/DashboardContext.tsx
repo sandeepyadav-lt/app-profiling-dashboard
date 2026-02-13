@@ -1,14 +1,15 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
 import { arrayMove } from '@dnd-kit/sortable';
-import type { DateRange, Frequency, WidgetInstance, WidgetFilterState, WidgetType } from '../types/dashboard';
+import type { DateRange, Frequency, WidgetInstance, WidgetFilterState, WidgetType, CpuViewMode, GlobalFilterState } from '../types/dashboard';
 import { getWidgetMeta } from '../data/widget-registry';
 
-const STORAGE_KEY = 'atx-dashboard-config';
+const STORAGE_KEY = 'atx-dashboard-config-v2';
 
 interface DashboardConfig {
   widgets: WidgetInstance[];
   dateRange: DateRange;
   frequency: Frequency;
+  globalFilters: GlobalFilterState;
 }
 
 interface DashboardContextValue {
@@ -23,11 +24,14 @@ interface DashboardContextValue {
   updateWidgetKpiVisibility: (id: string, kpiVisibility: Record<string, boolean>) => void;
   updateWidgetLabel: (id: string, label: string) => void;
   reorderWidgets: (activeId: string, overId: string) => void;
+  updateWidgetCpuViewMode: (id: string, mode: CpuViewMode) => void;
+  globalFilters: GlobalFilterState;
+  updateGlobalFilters: (filters: GlobalFilterState) => void;
 }
 
 const DashboardContext = createContext<DashboardContextValue | null>(null);
 
-let nextId = 6;
+let nextId = 9;
 
 function createWidgetInstance(type: WidgetType, id?: string, label?: string): WidgetInstance {
   const meta = getWidgetMeta(type);
@@ -41,15 +45,20 @@ function createWidgetInstance(type: WidgetType, id?: string, label?: string): Wi
 }
 
 const defaultWidgets: WidgetInstance[] = [
-  createWidgetInstance('performance-overview', '1', 'Performance Overview'),
-  createWidgetInstance('performance-trends', '2', 'Performance Trends'),
-  createWidgetInstance('device-matrix', '3', 'Device Performance Matrix'),
-  createWidgetInstance('flow-performance', '4', 'Flow Performance'),
-  createWidgetInstance('sla-compliance', '5', 'SLA Compliance'),
+  createWidgetInstance('cpu-usage', '1', 'CPU Utilization Trend'),
+  createWidgetInstance('frame-rate', '2', 'Frame Rate Trends'),
+  createWidgetInstance('memory-usage', '3', 'Memory Usage'),
+  createWidgetInstance('battery-utilization', '4', 'Battery Utilization'),
+  createWidgetInstance('network-utilization', '5', 'Network Utilization'),
+  createWidgetInstance('battery-temperature', '6', 'Battery Temperature'),
+  createWidgetInstance('cold-startup', '7', 'Cold Startup Time'),
+  createWidgetInstance('hot-startup', '8', 'Hot Startup Time'),
 ];
 
 const validDateRanges: DateRange[] = ['7d', '14d', '30d', '90d'];
 const validFrequencies: Frequency[] = ['daily', 'weekly', 'monthly'];
+
+const defaultGlobalFilters: GlobalFilterState = { selections: {} };
 
 function loadConfig(): DashboardConfig | null {
   try {
@@ -63,19 +72,22 @@ function loadConfig(): DashboardConfig | null {
     ) {
       return null;
     }
-    return parsed as DashboardConfig;
+    return {
+      ...parsed,
+      globalFilters: parsed.globalFilters ?? defaultGlobalFilters,
+    } as DashboardConfig;
   } catch {
     return null;
   }
 }
 
-function initState(): { widgets: WidgetInstance[]; dateRange: DateRange; frequency: Frequency } {
+function initState(): { widgets: WidgetInstance[]; dateRange: DateRange; frequency: Frequency; globalFilters: GlobalFilterState } {
   const saved = loadConfig();
   if (saved) {
     nextId = Math.max(...saved.widgets.map((w) => Number(w.id) || 0), 5) + 1;
     return saved;
   }
-  return { widgets: defaultWidgets, dateRange: '30d', frequency: 'daily' };
+  return { widgets: defaultWidgets, dateRange: '30d', frequency: 'daily', globalFilters: defaultGlobalFilters };
 }
 
 const initial = initState();
@@ -84,11 +96,12 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
   const [dateRange, setDateRange] = useState<DateRange>(initial.dateRange);
   const [frequency, setFrequency] = useState<Frequency>(initial.frequency);
   const [widgets, setWidgets] = useState<WidgetInstance[]>(initial.widgets);
+  const [globalFilters, setGlobalFilters] = useState<GlobalFilterState>(initial.globalFilters);
 
   useEffect(() => {
-    const config: DashboardConfig = { widgets, dateRange, frequency };
+    const config: DashboardConfig = { widgets, dateRange, frequency, globalFilters };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
-  }, [widgets, dateRange, frequency]);
+  }, [widgets, dateRange, frequency, globalFilters]);
 
   const addWidget = useCallback((type: WidgetType) => {
     setWidgets((prev) => [...prev, createWidgetInstance(type)]);
@@ -125,6 +138,16 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const updateWidgetCpuViewMode = useCallback((id: string, cpuViewMode: CpuViewMode) => {
+    setWidgets((prev) =>
+      prev.map((w) => (w.id === id ? { ...w, cpuViewMode } : w)),
+    );
+  }, []);
+
+  const updateGlobalFilters = useCallback((filters: GlobalFilterState) => {
+    setGlobalFilters(filters);
+  }, []);
+
   return (
     <DashboardContext.Provider
       value={{
@@ -133,6 +156,8 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
         widgets, addWidget, removeWidget,
         updateWidgetFilters, updateWidgetKpiVisibility,
         updateWidgetLabel, reorderWidgets,
+        updateWidgetCpuViewMode,
+        globalFilters, updateGlobalFilters,
       }}
     >
       {children}

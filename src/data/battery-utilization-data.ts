@@ -1,0 +1,41 @@
+import type { ChartDataPoint, StatItem } from '../types/dashboard';
+
+export const batteryChartData: ChartDataPoint[] = [
+  { label: 'Jan 1', value: 0.3 },
+  { label: 'Jan 2', value: 0.2 },
+  { label: 'Jan 3', value: 0.4 },
+  { label: 'Jan 4', value: 0.1 },
+  { label: 'Jan 5', value: 0.5 },
+  { label: 'Jan 6', value: 0.3 },
+  { label: 'Jan 7', value: 0.2 },
+  { label: 'Jan 8', value: 0.6 },
+  { label: 'Jan 9', value: 0.4 },
+  { label: 'Jan 10', value: 0.3 },
+  { label: 'Jan 11', value: 0.1 },
+  { label: 'Jan 12', value: 0.2 },
+  { label: 'Jan 13', value: 0.5 },
+  { label: 'Jan 14', value: 0.7 },
+  { label: 'Jan 15', value: 0.3 },
+  { label: 'Jan 16', value: 0.2 },
+  { label: 'Jan 17', value: 0.4 },
+  { label: 'Jan 18', value: 0.3 },
+  { label: 'Jan 19', value: 0.1 },
+  { label: 'Jan 20', value: 0.6 },
+  { label: 'Jan 21', value: 0.8 },
+  { label: 'Jan 22', value: 0.3 },
+  { label: 'Jan 23', value: 0.2 },
+  { label: 'Jan 24', value: 0.5 },
+  { label: 'Jan 25', value: 1.1 },
+  { label: 'Jan 26', value: 0.4 },
+  { label: 'Jan 27', value: 0.3 },
+  { label: 'Jan 28', value: 0.2 },
+  { label: 'Jan 29', value: 0.6 },
+  { label: 'Jan 30', value: 0.4 },
+];
+
+export const batteryStats: StatItem[] = [
+  { label: 'Min', value: '0.1 mAh' },
+  { label: 'Max', value: '1.1 mAh' },
+  { label: 'Mean', value: '0.37 mAh' },
+  { label: 'P95', value: '0.8 mAh' },
+];

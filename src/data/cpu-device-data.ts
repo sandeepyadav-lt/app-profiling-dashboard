@@ -1,0 +1,41 @@
+import type { ChartDataPoint, StatItem } from '../types/dashboard';
+
+export const cpuDeviceChartData: ChartDataPoint[] = [
+  { label: 'Jan 1', value: 72 },
+  { label: 'Jan 2', value: 78 },
+  { label: 'Jan 3', value: 70 },
+  { label: 'Jan 4', value: 82 },
+  { label: 'Jan 5', value: 88 },
+  { label: 'Jan 6', value: 79 },
+  { label: 'Jan 7', value: 74 },
+  { label: 'Jan 8', value: 80 },
+  { label: 'Jan 9', value: 91 },
+  { label: 'Jan 10', value: 95 },
+  { label: 'Jan 11', value: 89 },
+  { label: 'Jan 12', value: 83 },
+  { label: 'Jan 13', value: 77 },
+  { label: 'Jan 14', value: 73 },
+  { label: 'Jan 15', value: 79 },
+  { label: 'Jan 16', value: 85 },
+  { label: 'Jan 17', value: 82 },
+  { label: 'Jan 18', value: 76 },
+  { label: 'Jan 19', value: 74 },
+  { label: 'Jan 20', value: 71 },
+  { label: 'Jan 21', value: 75 },
+  { label: 'Jan 22', value: 80 },
+  { label: 'Jan 23', value: 86 },
+  { label: 'Jan 24', value: 90 },
+  { label: 'Jan 25', value: 84 },
+  { label: 'Jan 26', value: 78 },
+  { label: 'Jan 27', value: 73 },
+  { label: 'Jan 28', value: 70 },
+  { label: 'Jan 29', value: 76 },
+  { label: 'Jan 30', value: 81 },
+];
+
+export const cpuDeviceStats: StatItem[] = [
+  { label: 'Min', value: '70.0%' },
+  { label: 'Max', value: '95.0%' },
+  { label: 'Mean', value: '80.0%' },
+  { label: 'P95', value: '91.2%' },
+];

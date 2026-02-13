@@ -32,13 +32,13 @@ export const filterCategories: FilterCategory[] = [
   },
   {
     id: 'flow_scenario',
-    label: 'Flow / Scenario',
+    label: 'Test Case',
     options: [
-      { id: 'app_launch', label: 'App Launch → Home', checked: false },
-      { id: 'login_dashboard', label: 'Login → Dashboard', checked: false },
-      { id: 'search_results', label: 'Search → Results', checked: false },
-      { id: 'cart_checkout', label: 'Cart → Checkout', checked: false },
-      { id: 'checkout_payment', label: 'Checkout → Payment', checked: false },
+      { id: 'tc_cold_start', label: 'test_cold_start_to_home', checked: false },
+      { id: 'tc_login_success', label: 'test_login_success_flow', checked: false },
+      { id: 'tc_search_render', label: 'test_search_results_render', checked: false },
+      { id: 'tc_add_to_cart', label: 'test_add_to_cart_and_checkout', checked: false },
+      { id: 'tc_payment_complete', label: 'test_payment_complete_e2e', checked: false },
     ],
   },
   {

@@ -4,7 +4,8 @@
   left: 0;
   bottom: 0;
   width: var(--sidebar-width);
-  background: var(--lt-sidebar-bg);
+  background: var(--color-canvas-default);
+  border-right: 1px solid var(--color-border-default);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,23 +22,24 @@
 }
 
 .logoMark {
-  width: 24px;
-  height: 24px;
-  background: var(--lt-brand-orange);
-  border-radius: var(--radius-sm);
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: var(--font-weight-bold);
-  font-size: 14px;
-  color: white;
+}
+
+.logoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
+  gap: 2px;
   padding-top: var(--space-2);
   flex: 1;
 }
@@ -49,25 +51,25 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
-  color: var(--lt-sidebar-fg);
+  color: var(--color-fg-subtle);
   transition: all var(--duration-fast) ease;
 }
 
 .navBtn:hover {
-  background: var(--lt-sidebar-hover-bg);
-  color: var(--lt-sidebar-active);
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-default);
 }
 
 .navBtn.active {
-  background: var(--lt-sidebar-hover-bg);
-  color: var(--lt-sidebar-active);
+  background: var(--lt-brand-orange-subtle);
+  color: var(--lt-brand-orange);
 }
 
 .bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
+  gap: 2px;
   padding-bottom: var(--space-3);
 }
 
@@ -77,4 +79,131 @@
   border-radius: 50%;
   background: #16a34a;
   margin-top: var(--space-2);
+}
+
+/* ── Expanded state ── */
+
+.expanded {
+  width: var(--sidebar-width-expanded);
+  align-items: stretch;
+}
+
+.expandedHeader {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.expandedLogo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.expandedLogoImg {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+.backRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: 13px;
+  color: var(--color-fg-subtle);
+  border-bottom: 1px solid var(--color-border-default);
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+
+.backRow:hover {
+  color: var(--color-fg-default);
+}
+
+.expandedNav {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2) var(--space-3);
+}
+
+.sectionLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-fg-subtle);
+  padding: var(--space-3) var(--space-2) var(--space-1);
+  letter-spacing: 0.03em;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--color-fg-subtle);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.navItem:hover {
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-default);
+}
+
+.navItem.activeItem {
+  background: var(--lt-brand-orange-subtle);
+  color: var(--lt-brand-orange);
+  font-weight: 500;
+}
+
+.expandedBottom {
+  border-top: 1px solid var(--color-border-default);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bottomItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--color-fg-subtle);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.bottomItem:hover {
+  background: var(--color-canvas-subtle);
+  color: var(--color-fg-default);
+}
+
+.bottomItem span {
+  flex: 1;
+}
+
+.upgradeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  margin-top: var(--space-2);
+  border-radius: var(--radius-md);
+  background: var(--lt-brand-orange);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.upgradeBtn:hover {
+  opacity: 0.9;
 }

@@ -18,7 +18,13 @@ import { DeviceMatrixWidget } from '../widgets/DeviceMatrixWidget';
 import { FlowPerformanceWidget } from '../widgets/FlowPerformanceWidget';
 import { SlaComplianceWidget } from '../widgets/SlaComplianceWidget';
 import { CpuUsageWidget } from '../widgets/CpuUsageWidget';
+import { FrameRateWidget } from '../widgets/FrameRateWidget';
 import { MemoryUsageWidget } from '../widgets/MemoryUsageWidget';
+import { BatteryUtilizationWidget } from '../widgets/BatteryUtilizationWidget';
+import { NetworkUtilizationWidget } from '../widgets/NetworkUtilizationWidget';
+import { BatteryTemperatureWidget } from '../widgets/BatteryTemperatureWidget';
+import { ColdStartupWidget } from '../widgets/ColdStartupWidget';
+import { HotStartupWidget } from '../widgets/HotStartupWidget';
 import { PlusIcon } from '../shared/icons';
 import type { WidgetInstance, WidgetInstanceProps } from '../../types/dashboard';
 import type { ComponentType } from 'react';
@@ -31,7 +37,13 @@ const widgetComponents: Record<string, ComponentType<WidgetInstanceProps>> = {
   'flow-performance': FlowPerformanceWidget,
   'sla-compliance': SlaComplianceWidget,
   'cpu-usage': CpuUsageWidget,
+  'frame-rate': FrameRateWidget,
   'memory-usage': MemoryUsageWidget,
+  'battery-utilization': BatteryUtilizationWidget,
+  'network-utilization': NetworkUtilizationWidget,
+  'battery-temperature': BatteryTemperatureWidget,
+  'cold-startup': ColdStartupWidget,
+  'hot-startup': HotStartupWidget,
 };
 
 interface WidgetRendererProps {

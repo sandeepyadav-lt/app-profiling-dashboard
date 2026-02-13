@@ -1,4 +1,4 @@
-export type MetricType = 'cpu' | 'memory' | 'fps' | 'crashRate';
+export type MetricType = 'cpu' | 'memory' | 'fps' | 'crashRate' | 'flowDuration';
 
 interface ThresholdBands {
   warningMin: number;
@@ -11,6 +11,7 @@ const thresholds: Record<MetricType, ThresholdBands> = {
   memory: { warningMin: 300, dangerMin: 400 },
   fps: { warningMin: 50, dangerMin: 30, inverted: true },
   crashRate: { warningMin: 1, dangerMin: 2 },
+  flowDuration: { warningMin: 2.5, dangerMin: 3.0 },
 };
 
 const zoneColors = {
@@ -93,6 +94,52 @@ export function getThresholdAnnotations(
       yMin: dangerMin,
       yMax,
       yScaleID,
+      backgroundColor: zoneColors.danger,
+      borderWidth: 0,
+      drawTime: 'beforeDatasetsDraw' as const,
+      adjustScaleRange: false,
+    },
+  };
+}
+
+/**
+ * Generates chartjs-plugin-annotation box annotations for horizontal bar charts.
+ * Uses xMin/xMax instead of yMin/yMax, with xScaleID for axis binding.
+ */
+export function getHorizontalThresholdAnnotations(
+  metric: MetricType,
+  xMin: number,
+  xMax: number,
+  xScaleID = 'x',
+) {
+  const { warningMin, dangerMin } = thresholds[metric];
+
+  return {
+    [`${metric}GreenZone`]: {
+      type: 'box' as const,
+      xMin,
+      xMax: warningMin,
+      xScaleID,
+      backgroundColor: zoneColors.green,
+      borderWidth: 0,
+      drawTime: 'beforeDatasetsDraw' as const,
+      adjustScaleRange: false,
+    },
+    [`${metric}WarningZone`]: {
+      type: 'box' as const,
+      xMin: warningMin,
+      xMax: dangerMin,
+      xScaleID,
+      backgroundColor: zoneColors.warning,
+      borderWidth: 0,
+      drawTime: 'beforeDatasetsDraw' as const,
+      adjustScaleRange: false,
+    },
+    [`${metric}DangerZone`]: {
+      type: 'box' as const,
+      xMin: dangerMin,
+      xMax,
+      xScaleID,
       backgroundColor: zoneColors.danger,
       borderWidth: 0,
       drawTime: 'beforeDatasetsDraw' as const,

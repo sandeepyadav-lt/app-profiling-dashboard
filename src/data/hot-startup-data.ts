@@ -1,0 +1,41 @@
+import type { ChartDataPoint, StatItem } from '../types/dashboard';
+
+export const hotStartupData: ChartDataPoint[] = [
+  { label: 'Jan 1', value: 45 },
+  { label: 'Jan 2', value: 52 },
+  { label: 'Jan 3', value: 38 },
+  { label: 'Jan 4', value: 60 },
+  { label: 'Jan 5', value: 75 },
+  { label: 'Jan 6', value: 48 },
+  { label: 'Jan 7', value: 35 },
+  { label: 'Jan 8', value: 42 },
+  { label: 'Jan 9', value: 55 },
+  { label: 'Jan 10', value: 28 },
+  { label: 'Jan 11', value: 32 },
+  { label: 'Jan 12', value: 50 },
+  { label: 'Jan 13', value: 65 },
+  { label: 'Jan 14', value: 78 },
+  { label: 'Jan 15', value: 45 },
+  { label: 'Jan 16', value: 38 },
+  { label: 'Jan 17', value: 25 },
+  { label: 'Jan 18', value: 42 },
+  { label: 'Jan 19', value: 58 },
+  { label: 'Jan 20', value: 70 },
+  { label: 'Jan 21', value: 82 },
+  { label: 'Jan 22', value: 55 },
+  { label: 'Jan 23', value: 40 },
+  { label: 'Jan 24', value: 35 },
+  { label: 'Jan 25', value: 48 },
+  { label: 'Jan 26', value: 62 },
+  { label: 'Jan 27', value: 90 },
+  { label: 'Jan 28', value: 72 },
+  { label: 'Jan 29', value: 50 },
+  { label: 'Jan 30', value: 42 },
+];
+
+export const hotStartupStats: StatItem[] = [
+  { label: 'Min', value: '25 ms' },
+  { label: 'Max', value: '90 ms' },
+  { label: 'Mean', value: '51 ms' },
+  { label: 'P95', value: '82 ms' },
+];

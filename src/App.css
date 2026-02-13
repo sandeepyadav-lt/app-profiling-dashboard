@@ -102,6 +102,11 @@ table {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  transition: margin-left var(--duration-normal) ease;
+}
+
+.app-layout.sidebar-expanded .app-main {
+  margin-left: var(--sidebar-width-expanded);
 }
 
 .app-content {
