@@ -17,7 +17,7 @@ function App() {
         <Sidebar expanded={sidebarExpanded} onToggle={() => setSidebarExpanded(!sidebarExpanded)} />
         <div className="app-main">
           <div className="app-content">
-            <DashboardHeader onAddWidget={() => setShowAddDialog(true)} />
+            <DashboardHeader />
             <GlobalFilterBar onAddWidget={() => setShowAddDialog(true)} />
             <WidgetGrid>
               <WidgetRenderer onAddWidget={() => setShowAddDialog(true)} />

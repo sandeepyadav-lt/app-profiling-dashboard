@@ -21,7 +21,7 @@ function UserAvatar() {
   );
 }
 
-export function DashboardHeader({ onAddWidget }: { onAddWidget: () => void }) {
+export function DashboardHeader() {
   return (
     <div className={styles.header}>
       <div className={styles.titleGroup}>
